@@ -69,6 +69,8 @@ class GGDB
 		    }
 		} else {
 		    echo "0 results";
+			
+			)
 		}
 	}
 

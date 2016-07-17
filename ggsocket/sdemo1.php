@@ -9,12 +9,11 @@ set_time_limit(0);
 ob_implicit_flush();
 
 $address = '127.0.0.1';
-$port = 10000;
+$port = 999;
 
 if (($sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)) === false) {
     echo "socket_create() failed: reason: " . socket_strerror(socket_last_error()) . "\n";
 }
-
 
 if (socket_bind($sock, $address, $port) === false) {
     echo "socket_bind() failed: reason: " . socket_strerror(socket_last_error($sock)) . "\n";
@@ -51,7 +50,7 @@ do {
         }
         $talkback = "PHP: You said '$buf'.\n";
         socket_write($msgsock, $talkback, strlen($talkback));
-        echo $talkback;
+        echo "$buf\n";
     } while (true);
     socket_close($msgsock);
 } while (true);
